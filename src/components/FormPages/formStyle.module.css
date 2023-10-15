@@ -1,0 +1,98 @@
+.pageStyle {
+    height: 100%;
+    min-height: 100vh;
+    width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pageStyle h1{
+    color:purple;
+    font-size: xxx-large;
+}
+
+.pageStyle input{
+    font-size: 20px;
+    width: 400px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 15px;
+    background: transparent;
+    border: 1px solid gray;
+}
+
+.pageStyle button{
+    font-size: 25px;
+    width: 400px;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 15px;
+    color: white;
+    background-color: purple;
+}
+
+
+/* Responsiveness */
+
+@media screen and (max-width: 768px) {
+    .pageStyle{
+        margin-top: 40px;
+    }
+    .pageStyle input{
+        width: 400px;
+        padding: 15px;
+        font-size: 15px;
+    }
+    .pageStyle button{
+        width: 400px;
+        padding: 10px;
+    }
+  }
+  
+@media screen and (max-width: 640px) {
+    .pageStyle {
+        padding-left: 50px;
+    }
+    .pageStyle input{
+        width: 350px;
+    }
+    .pageStyle button{
+        width: 350px;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .pageStyle {
+        padding-left: 50px;
+    }
+
+    .pageStyle input{
+        width: 250px;
+    }
+    .pageStyle button{
+        width: 250px;
+    }
+}
+
+@media screen and (max-width:300px) {
+    .pageStyle{
+        padding-left: 15px;
+    }
+    .pageStyle h1{
+        font-size: xx-large;
+    }
+    .pageStyle input{
+        width: 200px;
+        padding: 10px;
+        font-size: 10px;
+        margin: 10px;
+    }
+    .pageStyle button{
+        width: 200px;
+        font-size: 15px;
+        padding: 5px;
+    }
+}
