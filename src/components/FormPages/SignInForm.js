@@ -14,7 +14,7 @@ const SignInForm = () => {
   useEffect(() => {
     // This effect will run when the user state changes
     if (user) {
-      navigate('/'); // Navigate when user becomes true
+      navigate('/'); // Navigate to home page
     }
   }, [user, navigate]);
 

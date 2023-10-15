@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import formStyle from "./formStyle.module.css";
 
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { createUserAsync } from '../../redux/reducers/userReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { createUserAsync, signInWithGoogle, userSelector } from '../../redux/reducers/userReducer';
 import { toast } from 'react-toastify';
 
-
 function SignUpForm () {
+  const user = useSelector(userSelector);
   const [values, setValues] = useState({name:"", email:"", pass:"", confirmPass:""});
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,14 +21,22 @@ function SignUpForm () {
     }
     // Sign up and navigate to home page
     dispatch(createUserAsync(values));
+  }
+
+  useEffect(() => {
+    document.title = "BusyBuy | Create your account for free.";
+    // This effect will run when the user state changes
+    if (user) {
+      navigate('/'); // Navigate to home page
+    }
+  }, [user, navigate]);
+  
+  // if user signed in with google, dispatch signInWithGoogle function and navigate to home page 
+  async function handleSignInWithGoogle (){ 
+    dispatch(signInWithGoogle());
     navigate('/');
   }
 
-  // useEffect hook to set the document title
-  useEffect(() => {
-    document.title = "BusyBuy | Create your account for free."
-  }, [])
-  
   return (
     <div className=' pt-12 dark:bg-slate-900 dark:text-gray-400'>
       <div className={formStyle.pageStyle}>
@@ -41,7 +49,7 @@ function SignUpForm () {
           <input type="passwrord" placeholder="Confirm password" onChange={(e) => setValues((prev) => ({...prev, confirmPass:e.target.value}))} required/>
           
           <button> Sign Up </button>
-          <button> 
+          <button onClick={() => handleSignInWithGoogle()}> 
           <span> Sign In with Google </span> <i className = "fa-brands fa-google px-2 py-1 border-2 border-solid rounded-3xl text-base"></i> 
         </button>
         </form>
